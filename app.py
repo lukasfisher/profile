@@ -35,14 +35,12 @@ if section == 'Home':
     with cols[1]:
         st.image(image_path, width=188)
     st.write('')
-    # Add two images side by side at the bottom of the Home section
-    img1_path = os.path.join(os.path.dirname(__file__), 'soccer.jpg')
-    img2_path = os.path.join(os.path.dirname(__file__), 'fishpic.jpg')
+    # Add two images side by side at the bottom of the Home section (direct file names)
     img_cols = st.columns(2)
     with img_cols[0]:
-        st.image(img1_path, caption='Mens Soccer Final Four', use_container_width=True)
+        st.image('soccer.JPG', caption='Mens Soccer Final Four', use_container_width=True)
     with img_cols[1]:
-        st.image(img2_path, caption='Madison River, MT', use_container_width=True)
+        st.image('fishpic.JPG', caption='Madison River, MT', use_container_width=True)
 
 # Resume
 elif section == 'Resume':
@@ -70,7 +68,10 @@ elif section == 'Resume':
              'Managed programs to provide low-cost clothes and food to students in need')
     st.subheader('Technical Skills')
     st.write('SolidWorks, ANSYS Fluent, MATLAB')
-    st.download_button('Download Resume (PDF)', 'Resume.pdf', file_name='Resume.pdf')
+    # Fix download button to serve the actual PDF file
+    with open("Resume.pdf", "rb") as pdf_file:
+        PDFbyte = pdf_file.read()
+    st.download_button(label="Download Resume (PDF)", data=PDFbyte, file_name="Resume.pdf", mime="application/pdf")
 
 # Projects
 elif section == 'Projects':
