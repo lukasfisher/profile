@@ -38,9 +38,9 @@ if section == 'Home':
     # Add two images side by side at the bottom of the Home section (direct file names)
     img_cols = st.columns(2)
     with img_cols[0]:
-        st.image('soccer.JPG', caption='Mens Soccer Final Four', use_container_width=True)
+        st.image('./soccer.JPG', caption='Mens Soccer Final Four', use_container_width=True)
     with img_cols[1]:
-        st.image('fishpic.JPG', caption='Madison River, MT', use_container_width=True)
+        st.image('./fishpic.JPG', caption='Madison River, MT', use_container_width=True)
 
 # Resume
 elif section == 'Resume':
