@@ -1,9 +1,31 @@
 import streamlit as st
 import os
 
-# Sidebar navigation
+# Custom CSS to make sidebar buttons full width
+st.markdown("""
+    <style>
+    div.stButton > button {
+        width: 100% !important;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        font-size: 18px;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# Sidebar navigation with buttons
+if 'section' not in st.session_state:
+    st.session_state.section = 'Home'
 st.sidebar.title('Navigation')
-section = st.sidebar.radio('Go to', ['Home', 'Resume', 'Projects', 'Contact'])
+if st.sidebar.button('🏠 Home'):
+    st.session_state.section = 'Home'
+if st.sidebar.button('📄 Resume'):
+    st.session_state.section = 'Resume'
+if st.sidebar.button('💡 Projects'):
+    st.session_state.section = 'Projects'
+if st.sidebar.button('✉️ Contact'):
+    st.session_state.section = 'Contact'
+section = st.session_state.section
 
 # Home/About Me
 if section == 'Home':
